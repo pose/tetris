@@ -17,10 +17,10 @@ stdin.on('data', function (key) {
 });
 
 var arrowKeys = {
-  '\u001b[D': {move: 'left'},
-  '\u001b[A': {move: 'up'},
-  '\u001b[C': {move: 'right'},
-  '\u001b[B': {move: 'down'}
+  '\u001bOD': {move: 'left'},
+  '\u001bOA': {move: 'up'},
+  '\u001bOC': {move: 'right'},
+  '\u001bOB': {move: 'down'}
 };
 
 function MovementSource() {
@@ -28,6 +28,7 @@ function MovementSource() {
   var self = this;
   this.shouldWrite = true;
   stdin.on('data', function (key) {
+    // console.log(JSON.stringify(key));
     if (self.shouldWrite) {
       // TODO Filter
       if (arrowKeys[key]) {
